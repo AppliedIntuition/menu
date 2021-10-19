@@ -76,8 +76,6 @@ export class SubMenu extends React.Component {
     title: '',
   };
 
-  ref = React.createRef();
-
   constructor(props) {
     super(props);
     const store = props.store;
@@ -134,10 +132,6 @@ export class SubMenu extends React.Component {
   onDestroy = (key) => {
     this.props.onDestroy(key);
   };
-
-  forcePopupAlign = () => {
-    this.ref.current?.forcePopupAlign();
-  }
 
   onKeyDown = (e) => {
     const keyCode = e.keyCode;
@@ -281,6 +275,14 @@ export class SubMenu extends React.Component {
   getOpenClassName = () => {
     return `${this.props.rootPrefixCls}-submenu-open`;
   };
+
+  ref = React.createRef();
+
+  forcePopupAlign = () => {
+    if (this.ref.current) {
+      this.ref.current.forcePopupAlign();
+    }
+  }
 
   saveMenuInstance = (c) => {
     // children menu instance
