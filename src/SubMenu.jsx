@@ -76,6 +76,8 @@ export class SubMenu extends React.Component {
     title: '',
   };
 
+  ref = React.createRef();
+
   constructor(props) {
     super(props);
     const store = props.store;
@@ -132,6 +134,10 @@ export class SubMenu extends React.Component {
   onDestroy = (key) => {
     this.props.onDestroy(key);
   };
+
+  forcePopupAlign = () => {
+    this.ref.current?.forcePopupAlign();
+  }
 
   onKeyDown = (e) => {
     const keyCode = e.keyCode;
@@ -507,6 +513,7 @@ export class SubMenu extends React.Component {
         {isInlineMode && children}
         {!isInlineMode && (
           <Trigger
+            ref={this.ref}
             prefixCls={prefixCls}
             popupClassName={`${prefixCls}-popup ${popupClassName}`}
             getPopupContainer={getPopupContainer}
