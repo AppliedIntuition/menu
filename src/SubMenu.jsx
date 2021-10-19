@@ -276,11 +276,9 @@ export class SubMenu extends React.Component {
     return `${this.props.rootPrefixCls}-submenu-open`;
   };
 
-  ref = React.createRef();
-
   forcePopupAlign = () => {
-    if (this.ref.current) {
-      this.ref.current.forcePopupAlign();
+    if (this.ref) {
+      this.ref.forcePopupAlign();
     }
   }
 
@@ -515,7 +513,7 @@ export class SubMenu extends React.Component {
         {isInlineMode && children}
         {!isInlineMode && (
           <Trigger
-            ref={this.ref}
+            ref={c => this.ref = c}
             prefixCls={prefixCls}
             popupClassName={`${prefixCls}-popup ${popupClassName}`}
             getPopupContainer={getPopupContainer}
