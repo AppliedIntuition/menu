@@ -93,6 +93,7 @@ export declare class SubMenu extends React.Component<SubMenuProps> {
     onSubMenuClick: (info: MenuInfo) => void;
     onSelect: SelectEventHandler;
     onDeselect: SelectEventHandler;
+    forcePopupAlign: () => void;
     getPrefixCls: () => string;
     getActiveClassName: () => string;
     getDisabledClassName: () => string;
